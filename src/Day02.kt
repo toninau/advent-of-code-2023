@@ -8,20 +8,9 @@ fun main() {
             val gameId = line.substring(5, line.indexOf(':')).toInt()
             val cubeSets = line.substringAfter(':').split(';')
                 .map { set ->
-                    var red = 0
-                    var green = 0
-                    var blue = 0
-                    for (string in set.split(',')) {
-                        if (string.contains("red")) {
-                            red = string.filter { it.isDigit() }.toInt()
-                        }
-                        if (string.contains("green")) {
-                            green = string.filter { it.isDigit() }.toInt()
-                        }
-                        if (string.contains("blue")) {
-                            blue = string.filter { it.isDigit() }.toInt()
-                        }
-                    }
+                    val red = "(\\d+) red".toRegex().find(set)?.groupValues?.get(1)?.toInt() ?: 0
+                    val green = "(\\d+) green".toRegex().find(set)?.groupValues?.get(1)?.toInt() ?: 0
+                    val blue = "(\\d+) blue".toRegex().find(set)?.groupValues?.get(1)?.toInt() ?: 0
                     CubeSet(red, green, blue)
                 }
             Game(gameId, cubeSets)
