@@ -1,4 +1,6 @@
 fun main() {
+    data class Scratchcard(val winningNumbers: List<Int>, val guessedNumbers: List<Int>)
+
     fun parse(input: List<String>): List<Scratchcard> {
         return input.map { line ->
             val scratchcardNumbers = line.substringAfter(':').split('|').map { numbers ->
@@ -22,5 +24,3 @@ fun main() {
     val scratchcards = parse(input)
     println(part1(scratchcards))
 }
-
-data class Scratchcard(val winningNumbers: List<Int>, val guessedNumbers: List<Int>)

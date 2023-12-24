@@ -1,4 +1,7 @@
 fun main() {
+    data class FoundNumber(val id: Int, val number: Int)
+    data class Point(val x: Int, val y: Int)
+
     fun findPointAdjacentNumbers(
         point: Point,
         schematic: List<List<Char>>,
@@ -80,6 +83,3 @@ fun main() {
     println(part1(schematic, allNumbers))
     println(part2(schematic, allNumbers))
 }
-
-data class FoundNumber(val id: Int, val number: Int)
-data class Point(val x: Int, val y: Int)
